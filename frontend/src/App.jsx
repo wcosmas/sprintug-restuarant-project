@@ -11,6 +11,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import RootLayout from './layouts/RootLayout';
 import Home from './pages/Home';
 import CreateRestuarant from './pages/CreateRestuarant';
+import UpdateRestaurant from './pages/UpdateRestaurant';
 
 // router and routes
 const router = createBrowserRouter(
@@ -18,6 +19,7 @@ const router = createBrowserRouter(
     <Route path="/" element={<RootLayout />}>
       <Route index element={<Home />} />
       <Route path="create" element={<CreateRestuarant />} />
+      <Route path="update/:id" element={<UpdateRestaurant />} />
     </Route>
   )
 );

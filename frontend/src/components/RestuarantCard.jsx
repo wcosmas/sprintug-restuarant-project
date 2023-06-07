@@ -15,10 +15,11 @@ import {
 } from '@chakra-ui/react';
 import { EditIcon, DeleteIcon } from '@chakra-ui/icons';
 import { MdLocationOn } from 'react-icons/md';
+import { NavLink } from 'react-router-dom';
 
 const API_URL = import.meta.env.VITE_API_URL;
 
-const RestuarantCard = ({ item }) => {
+const RestuarantCard = ({ item, handleDelete }) => {
   return (
     <Card maxWidth={'400px'}>
       <Image
@@ -48,10 +49,17 @@ const RestuarantCard = ({ item }) => {
             alignItems={'center'}
             justifyContent={'space-between'}
           >
-            <Button variant="ghost" leftIcon={<EditIcon />}>
-              Update
-            </Button>
-            <Button variant="ghost" leftIcon={<DeleteIcon />}>
+            <NavLink to={`/update/${item._id}`}>
+              <Button variant="ghost" leftIcon={<EditIcon />}>
+                Update
+              </Button>
+            </NavLink>
+
+            <Button
+              variant="ghost"
+              leftIcon={<DeleteIcon />}
+              onClick={() => handleDelete(item._id)}
+            >
               Delete
             </Button>
           </Box>

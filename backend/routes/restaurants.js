@@ -55,7 +55,7 @@ router.put('/:id', async (req, res) => {
       },
       { new: true }
     );
-    res.json(restaurant);
+    res.status(200).json(restaurant);
   } catch (err) {
     console.error(err);
     res.status(500).json({ error: 'Internal Server Error' });
