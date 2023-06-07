@@ -1,6 +1,8 @@
 require('dotenv').config();
 const express = require('express');
+const cors = require('cors');
 const mongoose = require('mongoose');
+
 const restaurantsRouter = require('./routes/restaurants');
 const uploadsRouter = require('./routes/uploads');
 
@@ -22,6 +24,7 @@ db.once('open', () => {
 });
 
 // Middleware
+app.use(cors());
 app.use(express.json()); // Parse JSON bodies
 app.use(express.urlencoded({ extended: true })); // Parse URL-encoded form data
 app.use('/uploads', express.static('uploads'));

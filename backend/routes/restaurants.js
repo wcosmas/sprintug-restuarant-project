@@ -16,14 +16,14 @@ router.get('/', async (req, res) => {
 // Create a new restaurant
 router.post('/', async (req, res) => {
   try {
-    const { name, cuisineType, location, imagePath } = req.body;
+    const { name, description, location, imagePath } = req.body;
     const restaurant = await Restaurant.create({
       name,
-      cuisineType,
+      description,
       location,
       imagePath,
     });
-    res.json(restaurant);
+    res.status(201).json(restaurant);
   } catch (err) {
     console.error(err);
     res.status(500).json({ error: 'Internal Server Error' });
@@ -44,12 +44,12 @@ router.get('/:id', async (req, res) => {
 // Update a restaurant
 router.put('/:id', async (req, res) => {
   try {
-    const { name, cuisineType, location, imagePath } = req.body;
+    const { name, description, location, imagePath } = req.body;
     const restaurant = await Restaurant.findByIdAndUpdate(
       req.params.id,
       {
         name,
-        cuisineType,
+        description,
         location,
         imagePath,
       },

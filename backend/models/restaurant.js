@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 
 const restaurantSchema = new mongoose.Schema({
   name: String,
-  cuisineType: String,
+  description: String,
   location: String,
   imagePath: String,
 });
