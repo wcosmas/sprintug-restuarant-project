@@ -1,13 +1,10 @@
 import React, { useEffect, useState } from 'react';
-import {
-  Container,
-  SimpleGrid,
-  Alert,
-  AlertIcon,
-} from '@chakra-ui/react';
+import { Container, SimpleGrid, Box, Text } from '@chakra-ui/react';
 import Navbar from '../components/Navbar';
 import RestuarantCard from '../components/RestuarantCard';
-import { useLocation } from 'react-router-dom';
+// import { useLocation } from 'react-router-dom';
+
+const API_URL = import.meta.env.VITE_API_URL;
 
 export default function Dashboard() {
   const [restuarants, setRestuarants] = useState([]);
@@ -16,7 +13,7 @@ export default function Dashboard() {
   useEffect(() => {
     async function fetchRestuarnts() {
       try {
-        await fetch('http://127.0.0.1:3000/api/restaurants', {
+        await fetch(`${API_URL}api/restaurants`, {
           method: 'GET',
         })
           .then((response) => response.json())
@@ -45,6 +42,12 @@ export default function Dashboard() {
           restuarants.map((item) => (
             <RestuarantCard key={item._id} item={item} />
           ))}
+        {restuarants.length === 0 && (
+          <Text as="h4" color={'red'} p={10} textAlign={'center'}>
+            No Restuarants Found!!! Click Add New to create new
+            Resturants
+          </Text>
+        )}
       </SimpleGrid>
     </Container>
   );

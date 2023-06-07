@@ -5,7 +5,7 @@ import {
   FormControl,
   Input,
   FormLabel,
-  Textarea,
+  Select,
   Button,
   Flex,
 } from '@chakra-ui/react';
@@ -16,10 +16,12 @@ import {
   showSuccessToastMessage,
 } from '../utils/notifications';
 
+const API_URL = import.meta.env.VITE_API_URL;
+
 const CreateRestuarant = () => {
   const [name, setName] = useState('');
   const [location, setLocation] = useState('');
-  const [description, setDescription] = useState('');
+  const [cuisineType, setCuisineType] = useState('');
   const [imagePath, setImagePath] = useState('');
 
   const navigateTo = useNavigate();
@@ -31,13 +33,10 @@ const CreateRestuarant = () => {
     formData.append('image', file);
 
     try {
-      const response = await fetch(
-        'http://127.0.0.1:3000/api/uploads',
-        {
-          method: 'POST',
-          body: formData,
-        }
-      );
+      const response = await fetch(`${API_URL}api/uploads`, {
+        method: 'POST',
+        body: formData,
+      });
 
       if (response.ok) {
         const { imagePath } = await response.json();
@@ -54,11 +53,11 @@ const CreateRestuarant = () => {
     let payload = {
       name,
       location,
-      description,
+      cuisineType,
       imagePath,
     };
     try {
-      await fetch('http://127.0.0.1:3000/api/restaurants', {
+      await fetch(`${API_URL}api/restaurants`, {
         method: 'POST',
         body: JSON.stringify(payload),
         headers: {
@@ -99,12 +98,16 @@ const CreateRestuarant = () => {
         </FormControl>
         <FormControl mt={5}>
           <FormLabel>Description</FormLabel>
-          <Textarea
-            placeholder="Here is a sample placeholder"
-            size="sm"
-            value={description}
-            onChange={(e) => setDescription(e.target.value)}
-          />
+          <Select
+            placeholder="Select option"
+            value={cuisineType}
+            onChange={(e) => setCuisineType(e.target.value)}
+          >
+            <option value="Chinese cuisine">Chinese cuisine</option>
+            <option value="French Cusine">French Cusine</option>
+            <option value="Japanese cuisine">Japanese cuisine</option>
+            <option value="Mexican cuisine">Mexican cuisine</option>
+          </Select>
         </FormControl>
         <FormControl mt={5}>
           <FormLabel>Location</FormLabel>

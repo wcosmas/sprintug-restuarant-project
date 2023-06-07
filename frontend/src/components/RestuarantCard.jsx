@@ -16,20 +16,22 @@ import {
 import { EditIcon, DeleteIcon } from '@chakra-ui/icons';
 import { MdLocationOn } from 'react-icons/md';
 
+const API_URL = import.meta.env.VITE_API_URL;
+
 const RestuarantCard = ({ item }) => {
   return (
     <Card maxWidth={'400px'}>
       <Image
         objectFit="cover"
         maxW="100%"
-        src={`http://localhost:3000/${item.imagePath}`}
+        src={`${API_URL}${item.imagePath}`}
         alt="Caffe Latte"
       />
       <Stack>
         <CardBody>
           <Heading size="md">{item.name}</Heading>
 
-          <Text py="2">{item.description}</Text>
+          <Text py="2">{item.cuisineType}</Text>
           <Box display={'flex'} flexDir={'row'} alignItems={'center'}>
             <Icon as={MdLocationOn} color={'gray.500'} />
             <Text color={'gray.500'} ml={1}>

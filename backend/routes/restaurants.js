@@ -16,10 +16,10 @@ router.get('/', async (req, res) => {
 // Create a new restaurant
 router.post('/', async (req, res) => {
   try {
-    const { name, description, location, imagePath } = req.body;
+    const { name, cuisineType, location, imagePath } = req.body;
     const restaurant = await Restaurant.create({
       name,
-      description,
+      cuisineType,
       location,
       imagePath,
     });
@@ -44,12 +44,12 @@ router.get('/:id', async (req, res) => {
 // Update a restaurant
 router.put('/:id', async (req, res) => {
   try {
-    const { name, description, location, imagePath } = req.body;
+    const { name, cuisineType, location, imagePath } = req.body;
     const restaurant = await Restaurant.findByIdAndUpdate(
       req.params.id,
       {
         name,
-        description,
+        cuisineType,
         location,
         imagePath,
       },
