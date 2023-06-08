@@ -25,6 +25,7 @@ const RestuarantCard = ({ item, handleDelete }) => {
       <Image
         objectFit="cover"
         maxW="100%"
+        maxHeight={250}
         src={`${API_URL}${item.imagePath}`}
         alt="Caffe Latte"
       />

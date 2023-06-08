@@ -33,11 +33,17 @@ Before you can set up and run the app, you will need the following:
     npm install
     ```
 
-2. Create `.env` file and provide `VITE_API_URL` for example <http://127.0.0.1:8000/>
+2. Create `.env` file and provide `VITE_API_URL` for example <http://127.0.0.1:3000/>
 3. Run the command below to start the development server
 
     ```
     npm run dev
     ```
 
-4. Open your web browser and go to <http://127.0.0.1:5173/>. You should see the app
+5. To run tests, run the command below
+
+    ```
+    npm test
+    ```
+
+6. Open your web browser and go to <http://127.0.0.1:5173/>. You should see the app
