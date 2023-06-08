@@ -47,3 +47,11 @@ Before you can set up and run the app, you will need the following:
     ```
 
 6. Open your web browser and go to <http://127.0.0.1:5173/>. You should see the app
+
+## Screenshots
+1. Home Page
+    ![Resturant](https://github.com/wcosmas/sprintug-restuarant-project/assets/37125096/b2a07a11-7ebd-4bd6-b2ed-ab13963fa9e7)
+2. Create Restaurant Page
+    ![create](https://github.com/wcosmas/sprintug-restuarant-project/assets/37125096/ab341a39-2c76-47ba-92e9-07a0b23841b0)
+3. Update Restaurant Page
+    ![update](https://github.com/wcosmas/sprintug-restuarant-project/assets/37125096/699aded5-f2a3-429b-ad85-e11d41f38936)
